@@ -21,19 +21,19 @@ return new class extends Migration
             //usado para q el id sea positivo
             $table->bigInteger('catalogo_id')->unsigned();
             //slug para q en el link haga referncia al titulo y sea unico link por cada post
-            $table->string('fecha_ingreso');
-            $table->string('fecha_salida');
+            $table->date('fecha_ingreso');
+            $table->date('fecha_salida');
             $table->string('marca');
             $table->string('presentacion');
-            $table->string('lote');
-            $table->string('fecha_vencimiento');
+            $table->integer('lote');
+            $table->date('fecha_vencimiento');
             $table->string('resp_ingreso');
             $table->string('resp_salida');
-            $table->string('precio_sin_igv');
+            $table->double('precio_sin_igv',6,2);
             $table->string('area');
-            $table->string('cant_entrada');
-            $table->string('cant_salida');
-            $table->string('saldo');
+            $table->double('cant_entrada',6,2);
+            $table->double('cant_salida',6,2);
+            $table->double('saldo',6,2);
 
             // $table->string('slug')->unique();
             // //image nullable puede estar vacio sera un url

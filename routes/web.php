@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CatalogoController;
+use App\Http\Controllers\ProductoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
+//le ponemos middleware para q tenga acceso a la ruta si esta logeado sino no tendra acceso
+Route::resource('catalogos',CatalogoController::class)->middleware('auth');
+Route::resource('productos',ProductoController::class)->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

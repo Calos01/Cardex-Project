@@ -33,8 +33,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        {{-- Si usuario esta logeado mostrara las vistas catalogos y productos --}}
+                        @if (Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('catalogos.index') }}">{{ __('Catalogo') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('productos.index') }}">{{ __('Productos') }}</a>
+                        </li>
+                        @endif
                     </ul>
+
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -81,3 +91,4 @@
     </div>
 </body>
 </html>
+
