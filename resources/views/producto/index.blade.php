@@ -76,9 +76,7 @@
 											<td>{{ $producto->area }}</td>
 											<td>{{ $producto->cant_entrada }}</td>
 											<td>{{ $producto->cant_salida }}</td>
-                                            @if ($producto->saldo=="")
-											<td>{{ $producto->saldo = $producto->cant_entrada - $producto->cant_salida}}</td>
-                                            @endif
+											<td>{{ $producto->saldo}}</td>
 
                                             <td>
                                                 <form action="{{ route('productos.destroy',$producto->id) }}" method="POST">
@@ -90,14 +88,23 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                <script>
+
+                                                </script>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
                 {!! $productos->links() !!}
             </div>
         </div>
     </div>
+
 @endsection

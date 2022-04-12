@@ -1,5 +1,5 @@
 <div class="box box-info padding-1">
-    <div class="box-body">
+    <div class="box-body" id="contenido">
 
         <div class="form-group">
             {{ Form::label('catalogo_id') }}
@@ -59,23 +59,64 @@
         </div>
         <div class="form-group">
             {{ Form::label('cant_entrada') }}
-            {{ Form::number('cant_entrada', $producto->cant_entrada, ['class' => 'form-control' . ($errors->has('cant_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Cant Entrada']) }}
+            {{ Form::number('cant_entrada', $producto->cant_entrada, ['class' => 'form-control' . ($errors->has('cant_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Cant Entrada','id'=>'entrada','onchange'=>"restar(this.value);"]) }}
             {!! $errors->first('cant_entrada', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('cant_salida') }}
-            {{ Form::number('cant_salida', $producto->cant_salida, ['class' => 'form-control' . ($errors->has('cant_salida') ? ' is-invalid' : ''), 'placeholder' => 'Cant Salida']) }}
+            {{ Form::number('cant_salida', $producto->cant_salida, ['class' => 'form-control' . ($errors->has('cant_salida') ? ' is-invalid' : ''), 'placeholder' => 'Cant Salida','id'=>'salida','onchange'=>"restar(this.value);"]) }}
             {!! $errors->first('cant_salida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
-        {{-- <div class="form-group">
+        <div class="form-group">
             {{ Form::label('saldo') }}
-            {{ Form::number('saldo', $producto->saldo, ['class' => 'form-control' . ($errors->has('saldo') ? ' is-invalid' : ''), 'placeholder' => $producto->saldo, 'readonly' => 'true'])}}
+            {{ Form::number('saldo', $producto->saldo, ['class' => 'form-control' . ($errors->has('saldo') ? ' is-invalid' : ''),'readonly' => 'true','id'=>'spTotal'])}}
             {!! $errors->first('saldo', '<div class="invalid-feedback">:message</div>') !!}
-        </div> --}}
+        </div>
 
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>
+    <script type="text/javascript">
+        function restar (valor) {
+            // var total = 0;
+            // valor = parseInt(valor); // Convertir el valor a un entero (número).
+
+            // total = document.getElementById('spTotal').value;
+
+            // // Aquí valido si hay un valor previo, si no hay datos, le pongo un cero "0".
+            // total = (total == null || total == undefined || total == "") ? 0 : total;
+
+            // /* Esta es la suma. */
+            // total = (parseInt(total) - parseInt(valor));
+
+            // // Colocar el resultado de la suma en el control "span".
+            // document.getElementById('spTotal').value = total;
+
+            var num1=document.getElementById('entrada').value;
+            var num2=document.getElementById('salida').value;
+            var total=num1 - num2;
+            document.getElementById('spTotal').value = total;
+        }
+
+        // $(document).on('ready',constructor);
+        // function constructor(){
+        //     sumar();
+        // }
+        // function sumar(){
+        //     $('#contenido').on('change','#entrada,#salida',function(){
+        //         var num1=parseFloat($('#entrada').val());
+        //         var num2=parseFloat($('#salida').val());
+        //         if(isNan(num1)){
+        //             num1=0;
+        //         }
+        //         if(isNan(num2)){
+        //             num2=0;
+        //         }
+        //         return
+        //         $('#saldo').val(num1-num2);
+        //     })
+        // }
+    </script>
