@@ -35,8 +35,14 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
+										<th>
+                                            <div class="form-group">
+                                                {{ Form::label('catalogo_id') }}
+                                                {{-- aca agrgamos el $catalogos q hicimos con el pluck y cambiamos a Form::select --}}
+                                                {{ Form::select('catalogo_buscar', $catalogos, ['class' => 'form-control', 'placeholder' => 'Catalogo Id']) }}
 
-										<th>Catalogo</th>
+                                            </div>
+                                        </th>
 										<th>Fecha Ingreso</th>
 										<th>Fecha Salida</th>
 										<th>Marca</th>
@@ -55,6 +61,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $total=0;
+                                    @endphp
                                     @foreach ($productos as $producto)
                                         <tr>
                                             <td>{{ ++$i }}</td>
@@ -88,14 +97,17 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <script>
 
-                                                </script>
-                                            </td>
-                                        </tr>
+                                            @php
+                                                $total+=$producto->saldo;
+                                            @endphp
+
                                     @endforeach
+                                    <tr class="col-sm-4">
+                                        <td>
+                                            <h5>Total: {{$total}}</h5>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -20,8 +20,8 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::paginate();
-
-        return view('producto.index', compact('productos'))
+        $catalogos = Catalogo::pluck('name_category','id');
+        return view('producto.index', compact('productos','catalogos'))
             ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
     }
 

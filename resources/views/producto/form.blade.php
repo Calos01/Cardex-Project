@@ -59,12 +59,14 @@
         </div>
         <div class="form-group">
             {{ Form::label('cant_entrada') }}
-            {{ Form::number('cant_entrada', $producto->cant_entrada, ['class' => 'form-control' . ($errors->has('cant_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Cant Entrada','id'=>'entrada','onchange'=>"restar(this.value);"]) }}
+            {{-- <input type="number" value="{{$producto->cant_entrada}}" class="form-control" placeholder="Cant Entrada" id="entrada" onchange="restar(this.value);", step="0.01"> --}}
+            {{ Form::number('cant_entrada', $producto->cant_entrada, ['class' => 'form-control' . ($errors->has('cant_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Cant Entrada','id'=>'entrada','onchange'=>"restar(this.value);", 'step'=> '0.01']) }}
             {!! $errors->first('cant_entrada', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('cant_salida') }}
-            {{ Form::number('cant_salida', $producto->cant_salida, ['class' => 'form-control' . ($errors->has('cant_salida') ? ' is-invalid' : ''), 'placeholder' => 'Cant Salida','id'=>'salida','onchange'=>"restar(this.value);"]) }}
+            {{-- <input type="number" value="{{$producto->cant_salida}}" class="form-control" placeholder="Cant Salida" id="salida" onchange="restar(this.value);", step="0.01"> --}}
+            {{ Form::number('cant_salida', $producto->cant_salida, ['class' => 'form-control' . ($errors->has('cant_salida') ? ' is-invalid' : ''), 'placeholder' => 'Cant Salida','id'=>'salida','onchange'=>"restar(this.value);", 'step'=> '0.01']) }}
             {!! $errors->first('cant_salida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
